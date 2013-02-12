@@ -1,0 +1,12 @@
+
+#.xession
+
+#    xrdb -merge .Xresources
+#    xpmroot ~/background.xpm &
+
+   feh --bg-scale ~/.dotfiles/background.jpg &
+
+   gnome-terminal &
+
+   xmonad
+
