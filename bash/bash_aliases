@@ -1,4 +1,1 @@
-alias ls="ls -a"
 alias gs="git status"
-
-
