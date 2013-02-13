@@ -22,6 +22,7 @@ install:
 	# Copy files for bash
 	rm -f $(HOME)/.bashrc	
 	rm -f $(HOME)/.bash_aliases	
+	rm -f $(HOME)/.bash_env	
 
 	cp .tmp $(HOME)/.bashrc
 	cat bash/bashrc >> $(HOME)/.bashrc
@@ -29,6 +30,8 @@ install:
 	cp .tmp $(HOME)/.bash_aliases
 	cat bash/bash_aliases >> $(HOME)/.bash_aliases
 
+	cp .tmp $(HOME)/.bash_env
+	cat bash/bash_env >> $(HOME)/.bash_env
 
 	# Copy the gitconfig
 	
