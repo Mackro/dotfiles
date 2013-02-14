@@ -1,15 +1,4 @@
 
-#################################################
-# This file has been auto generated.		#
-# If you make any changes to it there is 	#
-# a risk those changes will be overwritten.	#
-#################################################
-
-# Install location:
-# /home/barber/programming/dotfiles
-
-
-
 # Icons
 GIT_ICON_OK="⚑";
 GIT_ICON_CHANGES="⚑";
