@@ -1,67 +1,46 @@
 
-default:
+LOCAL_PATH = $(shell pwd)
+
+prepare:
+	sudo apt-get install feh
+	sudo apt-get install vim
+	sudo apt-get acpi
 
 install:
 
-	rm -f .tmp
-	cp etc/warning .tmp;
-	echo "# Install location:\n# $(shell pwd)\n\n" >> .tmp
-	
+	# Bash
+	rm -f $(HOME)/.bashrc
+	rm -f $(HOME)/.bash_aliases
+	rm -f $(HOME)/.bash_env
+	rm -f $(HOME)/.bash_prompt
 
-	# Make sure that all the required packages are installed
+	ln -s $(LOCAL_PATH)/bash/bashrc $(HOME)/.bashrc
+	ln -s $(LOCAL_PATH)/bash/bash_aliases $(HOME)/.bash_aliases
+	ln -s $(LOCAL_PATH)/bash/bash_env $(HOME)/.bash_env
+	ln -s $(LOCAL_PATH)/bash/bash_prompt $(HOME)/.bash_prompt
 
-	sudo apt-get install feh vim
 
-	# Set up the folder stucture
-	
-	rm -rf $(HOME)/.dotfiles
-
-	mkdir $(HOME)/.dotfiles
-	mkdir $(HOME)/.dotfiles/xmonad
-
-	# Copy files for bash
-	rm -f $(HOME)/.bashrc	
-	rm -f $(HOME)/.bash_aliases	
-	rm -f $(HOME)/.bash_env	
-	rm -f $(HOME)/.bash_prompt	
-
-	cp .tmp $(HOME)/.bashrc
-	cat bash/bashrc >> $(HOME)/.bashrc
-	
-	cp .tmp $(HOME)/.bash_aliases
-	cat bash/bash_aliases >> $(HOME)/.bash_aliases
-
-	cp .tmp $(HOME)/.bash_env
-	cat bash/bash_env >> $(HOME)/.bash_env
-
-	cp .tmp $(HOME)/.bash_prompt
-	cat bash/bash_prompt >> $(HOME)/.bash_prompt
-
-	
-	# Copy files for vim
-	rm -f $(HOME)/.vimrc
-	cp vim/vimrc $(HOME)/.vimrc
-
-	# Copy the gitconfig
-	
+	# Git
 	rm -f $(HOME)/.gitconfig
-	cp .tmp $(HOME)/.gitconfig
-	cat git/gitconfig >> $(HOME)/.gitconfig
-
-	# Copy files for xmonad
-
-	cp xmonad/xmonad-startup $(HOME)/.dotfiles/xmonad
-	sudo rm -f /usr/bin/xmonad-startup 
-	sudo ln -s $(HOME)/.dotfiles/xmonad/xmonad-startup /usr/bin/xmonad-startup
-	sudo cp xmonad/xmonad.desktop /usr/share/xsessions/
-	cp xmonad/background.jpg $(HOME)/.dotfiles/background.jpg
 	
-	rm -f .tmp
+	ln -s $(LOCAL_PATH)/git/gitconfig $(HOME)/.gitconfig
+
+
+	# Vim
+	rm -f $(HOME)/.vimrc
+
+	ln -s $(LOCAL_PATH)/vim/vimrc $(HOME)/.vimrc
+
+	# Xmonad
+	rm -f $(HOME)/.xmonad_background.jpg
+	sudo rm -f /usr/share/xsessions/xmonad.desktop
+
+	ln -s $(LOCAL_PATH)/xmonad/background.jpg $(HOME)/.xmonad_background.jpg
+	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
+	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad-startup /bin/xmonad-startup
 
 uninstall:
 
-	rm -rf $(HOME)/.dotfiles
-	sudo rm -f /usr/bin/xmonad-startup
-	sudo cp xmonad/xmonad.desktop.default /usr/share/xsessions/xmonad.desktop
+	rm -f /usr/share/xsessions/xmonad.desktop
+	cp $(LOCAL_PATH)/xmonad/xmonad.desktop.default
 	
-
