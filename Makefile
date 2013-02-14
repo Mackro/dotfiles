@@ -40,8 +40,7 @@ install:
 	
 	# Copy files for vim
 	rm -f $(HOME)/.vimrc
-	cp .tmp $(HOME)/.vimrc
-	cat vim/vimrc >> $(HOME)/.vimrc
+	cp vim/vimrc $(HOME)/.vimrc
 
 	# Copy the gitconfig
 	
