@@ -37,6 +37,11 @@ install:
 	cp .tmp $(HOME)/.bash_prompt
 	cat bash/bash_prompt >> $(HOME)/.bash_prompt
 
+	
+	# Copy files for vim
+	rm -f $(HOME)/.vimrc
+	cp .tmp $(HOME)/.vimrc
+	cat vim/vimrc >> $(HOME)/.vimrc
 
 	# Copy the gitconfig
 	
