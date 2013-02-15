@@ -34,8 +34,16 @@ install:
 	# Xmonad
 	rm -f $(HOME)/.xmonad_background.jpg
 	sudo rm -f /usr/share/xsessions/xmonad.desktop
+	sudo rm -f /bin/xmonad-startup
+
+	mkdir -p $(HOME)/.xmonad
+	rm -f $(HOME)/.xmonad/xmonad.hs
+	rm -f $(HOME)/.xmobarrc
+	
 
 	ln -s $(LOCAL_PATH)/xmonad/background.jpg $(HOME)/.xmonad_background.jpg
+	ln -s $(LOCAL_PATH)/xmonad/xmonad.hs $(HOME)/.xmonad/xmonad.hs
+	ln -s $(LOCAL_PATH)/xmonad/xmobarrc $(HOME)/.xmobarrc
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad-startup /bin/xmonad-startup
 
