@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+ACPI=$(acpi)
+
+STATUS=$(echo $ACPI | cut -d ":" -f 2)
+STATUS=${STATUS:1:1}
+
+echo $STATUS
