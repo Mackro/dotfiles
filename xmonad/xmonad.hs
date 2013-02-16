@@ -5,6 +5,12 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
+myTerminal = "gnome-terminal"
+
+myModMask = mod4Mask -- Rebind Mod to the windows key
+
+
+
 main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig {
@@ -14,5 +20,6 @@ main = do
 		ppOutput = hPutStrLn xmproc,
 		ppTitle = xmobarColor "green" "" . shorten 50
 		},
-        modMask = mod4Mask -- Rebind Mod to the windows key
+	terminal = myTerminal,
+	modMask = myModMask
         }
