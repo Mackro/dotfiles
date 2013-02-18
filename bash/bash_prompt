@@ -1,8 +1,8 @@
 
 # Icons
-GIT_ICON_OK="⚑";
-GIT_ICON_CHANGES="⚑";
-GIT_ICON_DIRTY="⚑";
+GIT_ICON_OK="OK";
+GIT_ICON_CHANGES="c";
+GIT_ICON_DIRTY="new";
 
 # regular colors
 black="\033[0;30m"    # black
@@ -33,14 +33,14 @@ function __git_prompt {
 	if git branch > /dev/null 2>&1 ; then
 		message="";
 		if [[ $(git status | grep "working directory clean") ]]; then
-			message="$green$GIT_ICON_OK";
+			message="$GIT_ICON_OK";
 		elif [[ $(git status | grep "untracked files present") ]]; then 
-			message="$red$GIT_ICON_DIRTY";
+			message="$GIT_ICON_DIRTY";
 		else
-			message="$yellow$GIT_ICON_CHANGES";
+			message="$GIT_ICON_CHANGES";
 		fi
 
-		echo -ne " $cyan($(parse_git_branch) $message$cyan)";
+		echo -ne " ($(parse_git_branch) $message)";
 
 	else
 		echo " ";
