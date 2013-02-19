@@ -6,7 +6,24 @@ prepare:
 	sudo apt-get install vim
 	sudo apt-get acpi
 
-install:
+laptop:
+
+	make common
+	
+	sudo rm -f /usr/bin/xmo-battery
+	sudo ln -s $(LOCAL_PATH)/tools/xmo-battery /usr/bin/xmo-battery
+
+	rm -f $(HOME)/.xmobarrc
+	ln -s $(LOCAL_PATH)/xmonad/xmobarrc.laptop $(HOME)/.xmobarrc
+
+
+desktop:
+
+	make common
+	rm -f $(HOME)/.xmobarrc
+	ln -s $(LOCAL_PATH)/xmonad/xmobarrc.desktop $(HOME)/.xmobarrc
+
+common:
 
 	# Bash
 	rm -f $(HOME)/.bashrc
@@ -38,12 +55,10 @@ install:
 
 	mkdir -p $(HOME)/.xmonad
 	rm -f $(HOME)/.xmonad/xmonad.hs
-	rm -f $(HOME)/.xmobarrc
 	
 
 	ln -s $(LOCAL_PATH)/xmonad/background.jpg $(HOME)/.xmonad_background.jpg
 	ln -s $(LOCAL_PATH)/xmonad/xmonad.hs $(HOME)/.xmonad/xmonad.hs
-	ln -s $(LOCAL_PATH)/xmonad/xmobarrc $(HOME)/.xmobarrc
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad-startup /bin/xmonad-startup
 
