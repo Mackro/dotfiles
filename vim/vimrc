@@ -1,4 +1,6 @@
 set number
 set hlsearch
 colorscheme koehler
-
+set tabstop=2
+set shiftwidth=2
+set expandtab
