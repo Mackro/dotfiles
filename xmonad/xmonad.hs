@@ -16,10 +16,10 @@ main = do
     xmonad $ defaultConfig {
         manageHook = manageDocks <+> manageHook defaultConfig,
         layoutHook = avoidStruts  $  layoutHook defaultConfig,
-	logHook = dynamicLogWithPP xmobarPP {
-		ppOutput = hPutStrLn xmproc,
-		ppTitle = xmobarColor "red" "" . shorten 50
-		},
-	terminal = myTerminal,
-	modMask = myModMask
-        }
+      	logHook = dynamicLogWithPP xmobarPP {
+		      ppOutput = hPutStrLn xmproc,
+		      ppTitle = xmobarColor "red" "" . shorten 50
+		    },
+	      terminal = myTerminal,
+	      modMask = myModMask
+      }
