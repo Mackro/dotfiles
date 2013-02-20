@@ -39,7 +39,7 @@
 
 # Icons
 GIT_ICON_OK="✔";
-GIT_ICON_CHANGES="⚐";
+GIT_ICON_CHANGES="⚑";
 GIT_ICON_DIRTY="✘";
 
 function __git_prompt {
