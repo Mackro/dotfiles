@@ -9,7 +9,13 @@ myTerminal = "gnome-terminal"
 
 myModMask = mod4Mask -- Rebind Mod to the windows key
 
+myBorderWidth = 2
 
+myNormalBorderColor = "gray"
+
+myFocusedBorderColor = "purple"
+
+myFocusFollowsMouse = False
 
 main = do
     xmproc <- spawnPipe "xmobar"
@@ -21,5 +27,9 @@ main = do
 		      ppTitle = xmobarColor "red" "" . shorten 50
 		    },
 	      terminal = myTerminal,
-	      modMask = myModMask
+	      modMask = myModMask,
+        borderWidth = myBorderWidth,
+        normalBorderColor = myNormalBorderColor,
+        focusedBorderColor = myFocusedBorderColor,
+        focusFollowsMouse = myFocusFollowsMouse
       }
