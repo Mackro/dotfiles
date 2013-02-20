@@ -1,3 +1,5 @@
 alias gs="git status"
+alias jl="jobs -l"
+alias rbrc=". ~/.bashrc"
 alias cls="clear & ls"
 alias natti="sudo shutdown -h now"

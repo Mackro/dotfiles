@@ -1,6 +1,26 @@
-set number
-set hlsearch
+
+"============ Theme ============"
 colorscheme koehler
+set number
+
+"H============ Searching ============"
+"Highlight searches by default"
+set hlsearch
+
+"============ Tab width ============"
 set tabstop=2
 set shiftwidth=2
-set expandtab
+set expandtab "Makes vim substitute tab character with spaces"
+
+"============ Swap files ============"
+"No swap files"
+set noswapfile
+set nobackup
+set nowb
+
+"============ Movement ============"
+"Move one row instead of one line"
+nmap j gj
+nmap k gk 
+
+
