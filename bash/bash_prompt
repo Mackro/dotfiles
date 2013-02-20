@@ -46,14 +46,14 @@ function __git_prompt {
 	if git branch > /dev/null 2>&1 ; then
 		message="";
 		if [[ $(git status | grep "working directory clean") ]]; then
-			message="$GIT_ICON_OK";
+			message="\e[0;31m$GIT_ICON_OK\e[0m";
 		elif [[ $(git status | grep "ntracked files") ]]; then 
-			message="$GIT_ICON_DIRTY";
+			message="\e[0;31m$GIT_ICON_DIRTY\e[0m";
 		else
-			message="$GIT_ICON_CHANGES";
+			message="\e[0;33m$GIT_ICON_CHANGES\e[0m";
 		fi
 
-	  echo "($(parse_git_branch) $message) ";
+	  echo -ne "\e[0;37m(\e[0;36m$(parse_git_branch) $message\e[0;37m)\e[0m ";
 
 	else
 		echo "";
@@ -61,7 +61,7 @@ function __git_prompt {
 }
 
 function parse_git_branch {
-	echo $(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/');
+	echo -ne $(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/*\(.*\)/\1/');
 }
 
 
