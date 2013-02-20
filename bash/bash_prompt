@@ -46,7 +46,7 @@ function __git_prompt {
 	if git branch > /dev/null 2>&1 ; then
 		message="";
 		if [[ $(git status | grep "working directory clean") ]]; then
-			message="\e[0;31m$GIT_ICON_OK\e[0m";
+			message="\e[0;32m$GIT_ICON_OK\e[0m";
 		elif [[ $(git status | grep "ntracked files") ]]; then 
 			message="\e[0;31m$GIT_ICON_DIRTY\e[0m";
 		else
