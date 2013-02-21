@@ -8,8 +8,8 @@ set number
 set hlsearch
 
 "============ Tab width ============"
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab "Makes vim substitute tab character with spaces"
 
 "============ Swap files ============"
