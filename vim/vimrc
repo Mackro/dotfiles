@@ -37,3 +37,8 @@ execute "set colorcolumn=" . join(range(81,335), ',')
 set wildmenu
 set wildmode=list:longest,full
 
+"============ Cursor ============"
+if has("autocmd")
+  au InsertEnter * set cul
+  au InsertLeave * set nocul 
+endif
