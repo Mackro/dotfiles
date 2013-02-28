@@ -1,4 +1,5 @@
 !/bin/bash
 
 feh --bg-scale ~/.xmonad_background.jpg &
+setxkbmap -layout "se(dvorak)" -option &
 xmonad
