@@ -12,6 +12,8 @@ ZSH_THEME="robbyrussell"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias gs="git status"
+alias gpom="git push origin master"
+alias gp="git pull origin master"
 alias jl="jobs -l"
 alias rbrc=". ~/.bashrc"
 alias cls="clear & ls"
