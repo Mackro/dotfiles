@@ -9,7 +9,7 @@ set hlsearch
 "============ Tab width ============"
 set tabstop=4
 set shiftwidth=4
-set expandtab "Makes vim substitute tab character with spaces"
+"set expandtab "Makes vim substitute tab character with spaces"
 set smartindent
 set autoindent
 set showbreak=...
