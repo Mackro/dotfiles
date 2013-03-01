@@ -1,4 +1,3 @@
-
 LOCAL_PATH = $(shell pwd)
 
 # Groups
@@ -27,6 +26,8 @@ _zsh:
 	rm -rf $(HOME)/.oh-my-zsh
 	ln -s $(LOCAL_PATH)/zsh/zshrc $(HOME)/.zshrc
 	ln -s $(LOCAL_PATH)/oh-my-zsh $(HOME)/.oh-my-zsh
+	chsh -s /bin/zsh
+
 _git:
 
 	rm -f $(HOME)/.gitconfig
