@@ -6,6 +6,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 import Data.Ratio ((%))
+import XMonad.Hooks.SetWMName
 
 myTerminal = "gnome-terminal"
 
@@ -26,6 +27,9 @@ myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled ||| Full))
                     ratio   =   2%3     -- Percentage of the screen to increment by when resizing the window
                     delta   =   5%100   -- Default portion of the screen occupied by the master panel
 
+myStartupHook = do
+	setWMName "LG3D"
+
 main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig {
@@ -38,6 +42,7 @@ main = do
 	      terminal = myTerminal,
 	      modMask = myModMask,
         borderWidth = myBorderWidth,
+		startupHook = myStartupHook,
         normalBorderColor = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
         focusFollowsMouse = myFocusFollowsMouse
