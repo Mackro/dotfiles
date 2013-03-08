@@ -43,3 +43,5 @@ if has("autocmd")
   au InsertEnter * set cul
   au InsertLeave * set nocul 
 endif
+"============ Spelling ============"
+set spell
