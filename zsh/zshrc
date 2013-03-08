@@ -17,7 +17,9 @@ alias gp="git pull origin master"
 alias jl="jobs -l"
 alias rbrc=". ~/.bashrc"
 alias cls="clear & ls"
-alias natti="sudo shutdown -h now"
+alias natti="	sudo rm -rf ~/Temp
+				mkdir ~/Temp
+				sudo shutdown -h now"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
