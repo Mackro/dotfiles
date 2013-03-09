@@ -36,7 +36,9 @@ _git:
 _vim:
 
 	rm -f $(HOME)/.vimrc
+	rm -rf $(HOME)/.vim
 	ln -s $(LOCAL_PATH)/vim/vimrc $(HOME)/.vimrc
+	ln -s $(LOCAL_PATH)/vim/vim $(HOME)/.vim
 
 _xmonad_laptop:
 
