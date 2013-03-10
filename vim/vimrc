@@ -2,7 +2,7 @@
 set number
 syntax on
 set background=dark
-colorscheme solarized
+colorscheme koehler
 
 "H============ Searching ============"
 "Highlight searches by default"
@@ -50,9 +50,6 @@ if has("autocmd")
   au InsertEnter * set cul
   au InsertLeave * set nocul 
 endif
-"============ Spelling ============"
-set spell
-
 
 set nocompatible
 
@@ -73,5 +70,5 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
- 
-
+autocmd vimenter * if !argc() | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
