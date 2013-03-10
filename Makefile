@@ -37,8 +37,10 @@ _vim:
 
 	rm -f $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
+	sudo rm -f /usr/bin/wvim
 	ln -s $(LOCAL_PATH)/vim/vimrc $(HOME)/.vimrc
 	ln -s $(LOCAL_PATH)/vim/vim $(HOME)/.vim
+	sudo ln -s $(LOCAL_PATH)/tools/wvim /usr/bin/wvim
 
 _xmonad_laptop:
 
