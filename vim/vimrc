@@ -61,8 +61,8 @@ set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 filetype plugin indent on
  
 " Nerdtree
-autocmd vimenter * NERDTree
-let NERDTreeShowBookmarks=1
+" autocmd vimenter * NERDTree 
+let NERDTreeShowBookmarks=0
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
