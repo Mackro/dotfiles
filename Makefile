@@ -2,25 +2,26 @@ LOCAL_PATH = $(shell pwd)
 
 # Groups
 
-laptop:
+all_laptop:
 
-	make _common
-	make _xmonad_laptop
+	make all_common
+	make xmonad_laptop
 
-desktop:
+all_desktop:
 
-	make _common
-	make _xmonad_desktop
+	make all_common
+	make xmonad_desktop
 
-_common:
+all_common:
 
-	make _zsh
-	make _git
-	make _vim
+	make zsh
+	make git
+	make vim
+	make tools
 
 # Parts
 
-_zsh:
+zsh:
 
 	rm -f $(HOME)/.zshrc
 	rm -rf $(HOME)/.oh-my-zsh
@@ -28,46 +29,53 @@ _zsh:
 	ln -s $(LOCAL_PATH)/oh-my-zsh $(HOME)/.oh-my-zsh
 	chsh -s /bin/zsh
 
-_git:
+git:
 
 	rm -f $(HOME)/.gitconfig
 	ln -s $(LOCAL_PATH)/git/gitconfig $(HOME)/.gitconfig
 
-_vim:
+vim:
 
 	rm -f $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
-	sudo rm -f /usr/bin/wvim
 	ln -s $(LOCAL_PATH)/vim/vimrc $(HOME)/.vimrc
 	ln -s $(LOCAL_PATH)/vim/vim $(HOME)/.vim
+
+tools:
+
+	sudo rm -f /usr/bin/wvim
 	sudo ln -s $(LOCAL_PATH)/tools/wvim /usr/bin/wvim
 
-_xmonad_laptop:
+	sudo rm -f /usr/bin/verbose_clock
+	sudo ln -s $(LOCAL_PATH)/tools/verbose_clock /usr/bin/verbose_clock
 
-	make _xmonad_common
+xmonad_laptop:
+
+	make xmonad_common
+
 	sudo rm -f /usr/bin/xmo-battery
 	sudo ln -s $(LOCAL_PATH)/tools/xmo-battery /usr/bin/xmo-battery
+	
 	rm -f $(HOME)/.xmobarrc
 	ln -s $(LOCAL_PATH)/xmonad/xmobarrc.laptop $(HOME)/.xmobarrc
 
-_xmonad_desktop:
+xmonad_desktop:
 
-	make _xmonad_common
+	make xmonad_common
+	
 	rm -f $(HOME)/.xmobarrc
 	ln -s $(LOCAL_PATH)/xmonad/xmobarrc.desktop $(HOME)/.xmobarrc
 
-_xmonad_common:
+xmonad_common:
 
 	rm -f $(HOME)/.xmonad_background.jpg
 	sudo rm -f /usr/share/xsessions/xmonad.desktop
 	sudo rm -f /bin/xmonad-startup
-	sudo rm -f /usr/bin/verbose_clock
+	
 	mkdir -p $(HOME)/.xmonad
 	rm -f $(HOME)/.xmonad/xmonad.hs
+	
 	ln -s $(LOCAL_PATH)/xmonad/background.jpg $(HOME)/.xmonad_background.jpg
 	ln -s $(LOCAL_PATH)/xmonad/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad-startup /bin/xmonad-startup
-	sudo ln -s $(LOCAL_PATH)/tools/verbose_clock /usr/bin/verbose_clock
-
-
