@@ -34,7 +34,7 @@ nmap k gk
 
 "============ Page width ============"
 " This creates an invisible colorcolumn
-set textwidth=80
+" set textwidth=80
 hi ColorColumn ctermbg=None
 " Text that spans over 80 characters will
 " turn red
