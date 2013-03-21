@@ -61,10 +61,13 @@ _xmonad_common:
 	rm -f $(HOME)/.xmonad_background.jpg
 	sudo rm -f /usr/share/xsessions/xmonad.desktop
 	sudo rm -f /bin/xmonad-startup
+	sudo rm -f /usr/bin/verbose_clock
 	mkdir -p $(HOME)/.xmonad
 	rm -f $(HOME)/.xmonad/xmonad.hs
 	ln -s $(LOCAL_PATH)/xmonad/background.jpg $(HOME)/.xmonad_background.jpg
 	ln -s $(LOCAL_PATH)/xmonad/xmonad.hs $(HOME)/.xmonad/xmonad.hs
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
 	sudo ln -s $(LOCAL_PATH)/xmonad/xmonad-startup /bin/xmonad-startup
+	sudo ln -s $(LOCAL_PATH)/tools/verbose_clock /usr/bin/verbose_clock
+
 
