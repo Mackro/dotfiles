@@ -22,6 +22,11 @@ alias natti="	sudo rm -rf ~/Temp
 				sudo shutdown -h now"
 
 alias p2clip="pwd | xclip -sel clip"
+alias dot="cd ~/programming/dotfiles"
+alias frank="cd ~/programming/projects/frankthetank"
+alias amingo="cd ~/programming/ctk/mingo_android"
+alias imingo="cd ~/programming/ctk/mingo"
+alias ctk="cd ~/programming/ctk"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -50,5 +55,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-export PATH=/home/barber/tools/android-ndk-r8d:$PATH
+export PATH=/home/barber/tools/android-ndk-r8e:$PATH
 
