@@ -22,7 +22,7 @@ alias natti="	sudo rm -rf ~/Temp
 				sudo shutdown -h now"
 
 alias p2clip="pwd | xclip -sel clip"
-alias dot="cd ~/programming/dotfiles"
+alias dot="cd ~/dotfiles"
 alias frank="cd ~/programming/projects/frankthetank"
 alias amingo="cd ~/programming/ctk/mingo_android"
 alias imingo="cd ~/programming/ctk/mingo"
