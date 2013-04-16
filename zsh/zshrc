@@ -56,4 +56,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 export PATH=/home/barber/tools/android-ndk-r8e:$PATH
+export PATH=/home/barber/tools/android-sdk-linux/tools/:$PATH
+export PATH=:/home/barber/tools/android-sdk-linux/platform-tools/:$PATH
+
 
