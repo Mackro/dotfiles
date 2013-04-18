@@ -18,9 +18,14 @@ all_common:
 	make git
 	make vim
 	make tools
+	make gnome_terminal
 
 # Parts
 
+gnome_terminal:
+	rm -rf $(HOME)/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml	
+	ln -s $(LOCAL_PATH)/gnome-terminal/%gconf.xml $(HOME)/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
+	
 zsh:
 
 	rm -f $(HOME)/.zshrc
