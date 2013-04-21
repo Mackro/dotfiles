@@ -6,5 +6,5 @@ export GNOME_KEYRING_PID
 
 
 feh --bg-scale ~/.xmonad_background.jpg &
-# setxkbmap -layout "se(dvorak)" -option &
+setxkbmap -layout "se(dvorak)" -option &
 xmonad
