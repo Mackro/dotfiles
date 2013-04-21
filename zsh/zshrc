@@ -27,6 +27,7 @@ alias dl="cd ~/dl"
 alias frank="cd ~/programming/projects/frankthetank"
 alias amingo="cd ~/programming/ctk/mingo_android"
 alias imingo="cd ~/programming/ctk/mingo"
+alias has="cd ~/programming/ctk/produktionslina"
 alias ctk="cd ~/programming/ctk"
 
 # Set to this to use case-sensitive completion
