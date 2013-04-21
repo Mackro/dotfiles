@@ -29,11 +29,11 @@ nmap k gk
 "============ Page width ============"
 " This creates an invisible colorcolumn
 " set textwidth=80
-hi ColorColumn ctermbg=None
+" hi ColorColumn ctermbg=None
 " Text that spans over 80 characters will
 " turn red
-hi ColorColumn ctermfg=Red
-execute "set colorcolumn=" . join(range(81,335), ',')
+" hi ColorColumn ctermfg=Red
+" execute "set colorcolumn=" . join(range(81,335), ',')
 
 "============ Auto completion ============"
 set wildmenu
@@ -76,4 +76,4 @@ let g:clang_snippets = 1
 set number
 syntax enable
 set background=dark
-colorscheme koehler
+colorscheme solarized
