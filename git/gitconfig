@@ -17,3 +17,6 @@
 
 [format]
 	pretty = %C(red)%h %C(green)%an \n%C(white)%s\n
+
+[push]
+	default = simple
