@@ -2,50 +2,35 @@
 
 LOCAL_PATH=$(pwd)
 
-# Groups
-function all_laptop {
-	all_common
-	xmonad_laptop
-}
-function all_desktop {
-	all_common
-	xmonad_desktop
-}
-function all_common {
-	zsh
-	git
-	vim
-	tools
-}
+function install_zsh {
 
-# Parts
-function zsh {
+	echo "Installing zsh...";
+
 	rm -f $HOME/.zshrc
 	rm -rf $HOME/.oh-my-zsh
 	ln -s $LOCAL_PATH/zsh/zshrc $HOME/.zshrc
 	ln -s $LOCAL_PATH/oh-my-zsh $HOME/.oh-my-zsh
 	chsh -s /bin/zsh
 }
-function git {
+function install_git {
+
+	echo "Installing git...";
+
 	rm -f $HOME/.gitconfig
 	ln -s $LOCAL_PATH/git/gitconfig $HOME/.gitconfig
 }
-function vim {
+function install_vim {
+
+	echo "Installing vim...";
+
 	rm -f $HOME/.vimrc
 	rm -rf $HOME/.vim
 	ln -s $LOCAL_PATH/vim/vimrc $HOME/.vimrc
 	ln -s $LOCAL_PATH/vim/vim $HOME/.vim
 }
-function tools {
-	sudo rm -f /usr/bin/wvim
-	sudo ln -s $LOCAL_PATH/tools/wvim /usr/bin/wvim
+function install_xmonad_laptop {
 
-	sudo rm -f /usr/bin/verbose_clock
-	sudo ln -s $LOCAL_PATH/tools/verbose_clock /usr/bin/verbose_clock
-}
-function xmonad_laptop {
-
-	xmonad_common
+	echo "Installing xmobar for laptop...";
 
 	sudo rm -f /usr/bin/xmo-battery
 	sudo ln -s $LOCAL_PATH/tools/xmo-battery /usr/bin/xmo-battery
@@ -53,14 +38,17 @@ function xmonad_laptop {
 	rm -f $HOME/.xmobarrc
 	ln -s $LOCAL_PATH/xmonad/xmobarrc.laptop $HOME/.xmobarrc
 }
-function xmonad_desktop {
+function install_xmonad_desktop {
 
-	xmonad_common
-	
+	echo "Installing xmobar for desktop...";
+
 	rm -f $HOME/.xmobarrc
 	ln -s $LOCAL_PATH/xmonad/xmobarrc.desktop $HOME/.xmobarrc
 }
-function xmonad_common {
+function install_xmonad_common {
+
+	
+	echo "Installing xmonad...";
 
 	rm -f $HOME/.xmonad_background.jpg
 	sudo rm -f /usr/share/xsessions/xmonad.desktop
@@ -77,22 +65,59 @@ function xmonad_common {
 
 LAPTOP=false
 DESKTOP=false
+
+XMONAD=false
+VIM=false
+GIT=false
+ZSH=false
+
 ALL=false
 
-while getopts lda option
+while getopts ldaxvgz option
 do
         case "${option}"
         in
                 l) LAPTOP=true;;
                 d) DESKTOP=true;;
                 a) ALL=true;;
+				x) XMONAD=true;;
+				v) VIM=true;;
+				g) GIT=true;;
+				z) ZSH=true;;
         esac
 done
 
-if (LA) ; then
-elif ( $ALL && $LAPTOP ) ; then
-	all_laptop
-elif ( $ALL && $DESKTOP ) ; then
-	all_desktop
+if ($ALL); then
+	XMONAD=true;
+	VIM=true;
+	GIT=true;
+	ZSH=true;
 fi
+
+if ($LAPTOP && $DESKTOP); then
+	echo "You can't install both the laptop and desktop version!";
+elif (!($LAPTOP) && !($DESKTOP)); then
+	echo "You must install either the laptop or desktop version!";
+else
+	if ($XMONAD); then
+		install_xmonad_common;
+		if ($LAPTOP); then
+			install_xmonad_laptop;
+		elif ($DESKTOP); then
+			install_xmonad_desktop;
+		fi
+	fi
+	if ($VIM); then
+		install_vim;
+	fi
+	if ($GIT); then
+		install_git;
+	fi
+	if ($ZSH); then
+		install_zsh;
+	fi
+
+	echo "Done!"
+fi
+
 
