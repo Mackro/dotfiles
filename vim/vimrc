@@ -83,3 +83,7 @@ set number
 syntax enable
 set background=dark
 colorscheme solarized
+
+"========== Map ============"
+map Q <Nop>
+
