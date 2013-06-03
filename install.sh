@@ -50,34 +50,42 @@ function install_xmonad_desktop {
 	ln -s $LOCAL_PATH/xmonad/xmobarrc.desktop $HOME/.xmobarrc
 }
 function install_xmonad_common {
-
 	
 	echo "Installing xmonad...";
 
-	rm -f $HOME/.xmonad_background.jpg
 	sudo rm -f /usr/share/xsessions/xmonad.desktop
 	sudo rm -f /bin/xmonad-startup
 	
 	mkdir -p $HOME/.xmonad
 	rm -f $HOME/.xmonad/xmonad.hs
 	
-	ln -s $LOCAL_PATH/xmonad/background.jpg $HOME/.xmonad_background.jpg
 	ln -s $LOCAL_PATH/xmonad/xmonad.hs $HOME/.xmonad/xmonad.hs
 	sudo ln -s $LOCAL_PATH/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
 	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup /bin/xmonad-startup
+}
+function install_xmonad_common_withbg {
+	install_xmonad_common
+
+	rm -f $HOME/.xmonad_background.jpg
+	ln -s $LOCAL_PATH/xmonad/background.jpg $HOME/.xmonad_background.jpg
+	
+	sudo rm -f /bin/xmonad-startup
+	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup /bin/xmonad-startup-common
+	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup-bg /bin/xmonad-startup
 }
 
 LAPTOP=false
 DESKTOP=false
 
 XMONAD=false
+XMOBG=false
 VIM=false
 GIT=false
 ZSH=false
 
 ALL=false
 
-while getopts ldaxvgz option
+while getopts ldaxbvgz option
 do
         case "${option}"
         in
@@ -85,6 +93,7 @@ do
                 d) DESKTOP=true;;
                 a) ALL=true;;
 				x) XMONAD=true;;
+				b) XMOBG=true;;
 				v) VIM=true;;
 				g) GIT=true;;
 				z) ZSH=true;;
@@ -96,6 +105,10 @@ if ($ALL); then
 	VIM=true;
 	GIT=true;
 	ZSH=true;
+fi
+
+if ($XMOBG); then
+	echo "NO BG FFS!!";
 fi
 
 if ($LAPTOP && $DESKTOP); then
@@ -119,6 +132,10 @@ else
 	fi
 	if ($ZSH); then
 		install_zsh;
+	fi
+
+	if ($XMOBG); then
+		install_xmonad_common_withbg
 	fi
 
 	echo "Done!"
