@@ -8,8 +8,12 @@ function install_zsh {
 
 	rm -f $HOME/.zshrc
 	rm -rf $HOME/.oh-my-zsh
+	rm -rf $HOME/.aliases
+	rm -rf $HOME/.paths
 	ln -s $LOCAL_PATH/zsh/zshrc $HOME/.zshrc
 	ln -s $LOCAL_PATH/oh-my-zsh $HOME/.oh-my-zsh
+	touch $HOME/.aliases
+	touch $HOME/.paths
 	chsh -s /bin/zsh
 }
 function install_git {

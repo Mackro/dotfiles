@@ -15,20 +15,13 @@ alias gs="git status"
 alias gpom="git push origin master"
 alias gp="git pull origin master"
 alias jl="jobs -l"
-alias rbrc=". ~/.bashrc"
 alias cls="clear & ls"
 alias natti="	sudo rm -rf ~/Temp
 				mkdir ~/Temp
 				sudo shutdown -h now"
 
-alias p2clip="pwd | xclip -sel clip"
-alias dot="cd ~/dotfiles"
-alias dl="cd ~/dl"
-alias frank="cd ~/programming/projects/frankthetank"
-alias amingo="cd ~/programming/ctk/mingo_android"
-alias imingo="cd ~/programming/ctk/mingo"
-alias has="cd ~/programming/ctk/produktionslina"
-alias ctk="cd ~/programming/ctk"
+source $HOME/.aliases
+source $HOME/.paths
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -54,11 +47,5 @@ alias ctk="cd ~/programming/ctk"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-export PATH=/home/barber/tools/android-ndk-r8e:$PATH
-export PATH=/home/barber/tools/android-sdk-linux/tools/:$PATH
-export PATH=:/home/barber/tools/android-sdk-linux/platform-tools/:$PATH
 
 
