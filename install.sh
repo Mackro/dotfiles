@@ -96,7 +96,7 @@ fi
 
 if ($LAPTOP && $DESKTOP); then
 	echo "You can't install both the laptop and desktop version!";
-elif (!($LAPTOP) && !($DESKTOP)); then
+elif ($XMONAD && !($LAPTOP) && !($DESKTOP)); then
 	echo "You must install either the laptop or desktop version!";
 else
 	if ($XMONAD); then
