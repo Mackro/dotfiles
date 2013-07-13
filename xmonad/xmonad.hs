@@ -21,7 +21,7 @@ myFocusedBorderColor = "purple"
 
 myFocusFollowsMouse = False
 
-myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled ||| noBorders (fullscreenFull Full)))
+myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled)) ||| noBorders (fullscreenFull Full)
                 where
                     tiled   =   Tall nmaster delta ratio
                     nmaster =   1       -- Number of windows in the master panel
