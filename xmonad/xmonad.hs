@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -20,12 +21,17 @@ myFocusedBorderColor = "purple"
 
 myFocusFollowsMouse = False
 
-myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled ||| Full))
+myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled ||| noBorders (fullscreenFull Full)))
                 where
                     tiled   =   Tall nmaster delta ratio
                     nmaster =   1       -- Number of windows in the master panel
                     ratio   =   2%3     -- Percentage of the screen to increment by when resizing the window
                     delta   =   5%100   -- Default portion of the screen occupied by the master panel
+
+myLayout = avoidStruts (
+	Tall 1 (3/100) (1/2) |||
+	Mirror (Tall 1 (3/100) (1/2)) |||
+	noBorders (fullscreenFull Full))
 
 myStartupHook = do
 	setWMName "LG3D"
