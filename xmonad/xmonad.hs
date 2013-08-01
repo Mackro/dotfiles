@@ -21,7 +21,11 @@ myFocusedBorderColor = "purple"
 
 myFocusFollowsMouse = False
 
+<<<<<<< HEAD
 myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled ||| noBorders (fullscreenFull Full) )) ||| noBorders (fullscreenFull Full)
+=======
+myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled) ||| noBorders(Full)) ||| noBorders (fullscreenFull Full) 
+>>>>>>> 2261b8162b8b5cc99222cd3e417b75d86f7f6bff
                 where
                     tiled   =   Tall nmaster delta ratio
                     nmaster =   1       -- Number of windows in the master panel
@@ -43,7 +47,7 @@ main = do
         layoutHook = myLayoutHook, 
       	logHook = dynamicLogWithPP xmobarPP {
 		      ppOutput = hPutStrLn xmproc,
-		      ppTitle = xmobarColor "red" "" . shorten 70
+		      ppTitle = xmobarColor "#dc322f" "" . shorten 70
 		    },
 	      terminal = myTerminal,
 	      modMask = myModMask,

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 LOCAL_PATH=$(pwd)
 
@@ -6,21 +6,32 @@ function install_zsh {
 
 	echo "Installing zsh...";
 
-	rm -f $HOME/.zshrc
-	rm -rf $HOME/.oh-my-zsh
-	rm -rf $HOME/.aliases
-	rm -rf $HOME/.paths
+	if [ -f $HOME/.zshrc ]; then
+		echo "Backing up old zshrc"
+		mv $HOME/.zshrc $HOME/.zshrc.BACKUP
+	fi
+	
+	if [ ! -d $HOME/.oh-my-zsh ]; then
+		. $LOCAL_PATH/installs/install-oh-my-zsh.sh
+		rm -rf $HOME/.zshrc
+	fi
+
 	ln -s $LOCAL_PATH/zsh/zshrc $HOME/.zshrc
-	ln -s $LOCAL_PATH/oh-my-zsh $HOME/.oh-my-zsh
-	touch $HOME/.aliases
-	touch $HOME/.paths
+	
 	chsh -s /bin/zsh
 }
+
 function install_git {
 
 	echo "Installing git...";
 
-	rm -f $HOME/.gitconfig
+	hash git 2>/dev/null || { sudo apt-get install git };
+
+	if [ -f $HOME/.gitconfig ]; then
+		echo "Backing up old gitconfig";
+		mv $HOME/.gitconfig $HOME/.gitconfig.BACKUP
+	fi
+
 	ln -s $LOCAL_PATH/git/gitconfig $HOME/.gitconfig
 }
 function install_vim {
@@ -53,39 +64,30 @@ function install_xmonad_common {
 	
 	echo "Installing xmonad...";
 
+	install_xmonad_dependencies;
+
 	sudo rm -f /usr/share/xsessions/xmonad.desktop
-	sudo rm -f /bin/xmonad-startup
+	sudo rm -f /usr/bin/xmonad-startup
 	
 	mkdir -p $HOME/.xmonad
 	rm -f $HOME/.xmonad/xmonad.hs
 	
 	ln -s $LOCAL_PATH/xmonad/xmonad.hs $HOME/.xmonad/xmonad.hs
 	sudo ln -s $LOCAL_PATH/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
-	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup /bin/xmonad-startup
-}
-function install_xmonad_common_withbg {
-	install_xmonad_common
-
-	rm -f $HOME/.xmonad_background.jpg
-	ln -s $LOCAL_PATH/xmonad/background.jpg $HOME/.xmonad_background.jpg
-	
-	sudo rm -f /bin/xmonad-startup
-	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup /bin/xmonad-startup-common
-	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup-bg /bin/xmonad-startup
+	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup /usr/bin/xmonad-startup
 }
 
 LAPTOP=false
 DESKTOP=false
 
 XMONAD=false
-XMOBG=false
 VIM=false
 GIT=false
 ZSH=false
 
 ALL=false
 
-while getopts ldaxbvgz option
+while getopts ldaxvgz option
 do
         case "${option}"
         in
@@ -93,7 +95,6 @@ do
                 d) DESKTOP=true;;
                 a) ALL=true;;
 				x) XMONAD=true;;
-				b) XMOBG=true;;
 				v) VIM=true;;
 				g) GIT=true;;
 				z) ZSH=true;;
@@ -105,10 +106,6 @@ if ($ALL); then
 	VIM=true;
 	GIT=true;
 	ZSH=true;
-fi
-
-if ($XMOBG); then
-	echo "NO BG FFS!!";
 fi
 
 if ($LAPTOP && $DESKTOP); then
@@ -134,11 +131,6 @@ else
 		install_zsh;
 	fi
 
-	if ($XMOBG); then
-		install_xmonad_common_withbg
-	fi
-
 	echo "Done!"
 fi
-
 
