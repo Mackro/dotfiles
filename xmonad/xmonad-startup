@@ -5,5 +5,5 @@ export GNOME_KEYRING_SOCKET
 export GNOME_KEYRING_PID
 
 
-setxkbmap -layout "se(dvorak)" -option &
+setxkbmap -layout "se(svdvorak)" -option &
 xmonad
