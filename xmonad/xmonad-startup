@@ -1,8 +1,8 @@
 #!/bin/bash
 
-eval $(gnome-keyring-daemon --start)
-export GNOME_KEYRING_SOCKET
-export GNOME_KEYRING_PID
+# eval $(gnome-keyring-daemon --start)
+# export GNOME_KEYRING_SOCKET
+# export GNOME_KEYRING_PID
 
 
 setxkbmap -layout "se(svdvorak)" -option &
