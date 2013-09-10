@@ -1,9 +1,12 @@
 #!/bin/bash
 
-eval $(gnome-keyring-daemon --start)
-export GNOME_KEYRING_SOCKET
-export GNOME_KEYRING_PID
+#eval $(gnome-keyring-daemon --start)
+#export GNOME_KEYRING_SOCKET
+#export GNOME_KEYRING_PID
 
 
-setxkbmap -layout "se(dvorak)" -option &
+eval $(ssh-agent)
+
+# setxkbmap -layout "barber(barborak)" -option &
+setxkbmap "se(svdvorak)" &
 xmonad
