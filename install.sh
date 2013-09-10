@@ -69,8 +69,6 @@ function install_xmonad_common {
 	
 	echo "Installing xmonad...";
 
-	install_xmonad_dependencies;
-
 	sudo rm -f /usr/share/xsessions/xmonad.desktop
 	sudo rm -f /usr/bin/xmonad-startup
 	
@@ -81,14 +79,8 @@ function install_xmonad_common {
 	sudo ln -s $LOCAL_PATH/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
 	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup /usr/bin/xmonad-startup
 }
-function install_keymap {
-	echo "Installing keymap barber...";
 
-	rm -rf /usr/share/X11/xkb/symbols/barber
-
-	sudo ln -s $(LOCAL_PATH)/keymap/barber /usr/share/X11/xkb/symbols/barber
-
-}
+HELP=false
 
 LAPTOP=false
 DESKTOP=false
@@ -97,11 +89,10 @@ XMONAD=false
 VIM=false
 GIT=false
 ZSH=false
-KEYMAP=false
 
 ALL=false
 
-while getopts ldaxvgzk option
+while getopts ldaxvgzh option
 do
         case "${option}"
         in
@@ -112,7 +103,7 @@ do
 				v) VIM=true;;
 				g) GIT=true;;
 				z) ZSH=true;;
-				k) KEYMAP=true;;
+				h) HELP=true;;
         esac
 done
 
@@ -121,35 +112,41 @@ if ($ALL); then
 	VIM=true;
 	GIT=true;
 	ZSH=true;
-	KEYMAP=true;
 fi
 
-if ($LAPTOP && $DESKTOP); then
-	echo "You can't install both the laptop and desktop version!";
-elif ($XMONAD && !($LAPTOP) && !($DESKTOP)); then
-	echo "You must install either the laptop or desktop version!";
+if ($HELP); then
+	echo "Options:";
+	echo "x - installs everything needed for xmonad. Has to be used together with l or d options.";
+	echo "l - installs xmobar customized for laptop use";
+	echo "d - installs xmobar customized for desktop use";
+	echo "g - installs gitconfig";
+	echo "v - installs vim with bundles and config";
+	echo "z - installs oh-my-zsh and zsh config";
 else
-	if ($XMONAD); then
-		install_xmonad_common;
-		if ($LAPTOP); then
-			install_xmonad_laptop;
-		elif ($DESKTOP); then
-			install_xmonad_desktop;
+
+	if ($LAPTOP && $DESKTOP); then
+		echo "You can't install both the laptop and desktop version!";
+	elif ($XMONAD && !($LAPTOP) && !($DESKTOP)); then
+		echo "You must install either the laptop or desktop version!";
+	else
+		if ($XMONAD); then
+			install_xmonad_common;
+			if ($LAPTOP); then
+				install_xmonad_laptop;
+			elif ($DESKTOP); then
+				install_xmonad_desktop;
+			fi
 		fi
+		if ($VIM); then
+			install_vim;
+		fi
+		if ($GIT); then
+			install_git;
+		fi
+		if ($ZSH); then
+			install_zsh;
+		fi
+	
+		echo "Done!"
 	fi
-	if ($VIM); then
-		install_vim;
-	fi
-	if ($GIT); then
-		install_git;
-	fi
-	if ($ZSH); then
-		install_zsh;
-	fi
-	if ($KEYMAP); then
-		install_keymap;
-	fi
-
-	echo "Done!"
 fi
-
