@@ -18,9 +18,14 @@ function install_zsh {
 
 	ln -s $LOCAL_PATH/zsh/zshrc $HOME/.zshrc
 	
-	chsh -s /bin/zsh
-}
+	touch $HOME/.aliases;
+	touch $HOME/.paths;
 
+	chsh -s /bin/zsh
+
+	./zsh/gnome-terminal-colors-solarized/install.sh
+	./zsh/gnome-terminal-colors-solarized/solarize
+}
 function install_git {
 
 	echo "Installing git...";
@@ -76,6 +81,14 @@ function install_xmonad_common {
 	sudo ln -s $LOCAL_PATH/xmonad/xmonad.desktop /usr/share/xsessions/xmonad.desktop
 	sudo ln -s $LOCAL_PATH/xmonad/xmonad-startup /usr/bin/xmonad-startup
 }
+function install_keymap {
+	echo "Installing keymap barber...";
+
+	rm -rf /usr/share/X11/xkb/symbols/barber
+
+	sudo ln -s $(LOCAL_PATH)/keymap/barber /usr/share/X11/xkb/symbols/barber
+
+}
 
 LAPTOP=false
 DESKTOP=false
@@ -84,10 +97,11 @@ XMONAD=false
 VIM=false
 GIT=false
 ZSH=false
+KEYMAP=false
 
 ALL=false
 
-while getopts ldaxvgz option
+while getopts ldaxvgzk option
 do
         case "${option}"
         in
@@ -98,6 +112,7 @@ do
 				v) VIM=true;;
 				g) GIT=true;;
 				z) ZSH=true;;
+				k) KEYMAP=true;;
         esac
 done
 
@@ -106,6 +121,7 @@ if ($ALL); then
 	VIM=true;
 	GIT=true;
 	ZSH=true;
+	KEYMAP=true;
 fi
 
 if ($LAPTOP && $DESKTOP); then
@@ -129,6 +145,9 @@ else
 	fi
 	if ($ZSH); then
 		install_zsh;
+	fi
+	if ($KEYMAP); then
+		install_keymap;
 	fi
 
 	echo "Done!"
