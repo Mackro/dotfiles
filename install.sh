@@ -116,12 +116,14 @@ fi
 
 if ($HELP); then
 	echo "Options:";
-	echo "x - installs everything needed for xmonad. Has to be used together with l or d options.";
-	echo "l - installs xmobar customized for laptop use";
-	echo "d - installs xmobar customized for desktop use";
-	echo "g - installs gitconfig";
-	echo "v - installs vim with bundles and config";
-	echo "z - installs oh-my-zsh and zsh config";
+	echo "
+	\ta - All the following will be installed (-l or -d must also be provided as it's a requisite for xmonad)\n
+	\tl - Laptop configuration of xmobar \n
+	\td - Desktop configuration of xmobar\n
+	\tx - Xmonad is installed. Has to be used together with either -l or -d.\n
+	\tg - Gitconfig is installed \n
+	\tv - Vim configuration and plugins are installed \n
+	\tz - oh-my-zsh is installed, and zshrc is installed\n"
 else
 
 	if ($LAPTOP && $DESKTOP); then
