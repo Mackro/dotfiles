@@ -18,15 +18,16 @@ To install you can either copy the files you'd like to use to their destinations
 
 The install.sh script symlinks all files from the dotfiles directory to the correct destinations which means that they'll be under version control should you wish to make any changes.
 
-Please note that the install script will remove all conflicting files. If you feel uncertain, check what files are affected by the script before using it!
+Please note that the install script might remove all conflicting files. If you feel uncertain, check what files are affected by the script before using it!
 
 There are a couple of possible parameters to use:
--a All the following will be installed (-l or -d must also be provided as it's a requisite for xmonad)
--l Laptop configuration of xmonad (or rather xmobar)
--d Desktop configuration of xmonad (or rather xmobar)
--g Git gitconfig is installed
--v Vim configuration and plugins are installed
--z oh-my-zsh is installed, and zshrc is installed
+	a - All the following will be installed (-l or -d must also be provided as it's a requisite for xmonad)
+	l - Laptop configuration of xmobar 
+	d - Desktop configuration of xmobar
+	x - Xmonad is installed. Has to be used together with either -l or -d.
+	g - Gitconfig is installed
+	v - Vim configuration and plugins are installed
+	z - oh-my-zsh is installed, and zshrc is installed
 
 # Uninstallation
 You don't want to uninstall my dotfiles :) If you do, you're on your own...
