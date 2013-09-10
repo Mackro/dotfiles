@@ -1,5 +1,0 @@
-#!/bin/bash
-
-feh --bg-scale ~/.xmonad_background.jpg &
-
-. xmonad-startup-common
