@@ -20,3 +20,8 @@
 
 [push]
 	default = current
+
+[color "diff"]
+	meta = blue black bold
+[color]
+	ui = true
