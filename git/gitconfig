@@ -16,7 +16,7 @@
 	commiters = shortlog -nse --no-merges
 
 [format]
-	pretty = %C(red)%h %C(green)%an \n%C(white)%s\n
+	pretty = %C(red)%h %C(green)%an: %C(white)%s
 
 [push]
 	default = current
