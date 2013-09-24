@@ -3,7 +3,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-14-*-*-*-*-*-*-*"
 		, fgColor	= "#ffffff"
 		, position	= TopW L 100
 		, commands	= [ 
-						Run Cpu ["-L","3","-H","50","--low","#6666ff","--normal","#ff6666","--high","#ff0000"] 10
+						Run Cpu ["-L","3","-H","50","--low","#6666ff","--high","#ff0000"] 10
 						, Run BatteryP ["BAT0"]
 							["-t", "<timeleft>min <watts>",
 							"-L", "10", "-H", "80", "-p", "3",

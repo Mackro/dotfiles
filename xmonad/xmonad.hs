@@ -43,7 +43,7 @@ main = do
         layoutHook = myLayoutHook, 
       	logHook = dynamicLogWithPP xmobarPP {
 		      ppOutput = hPutStrLn xmproc,
-		      ppTitle = xmobarColor "#dc322f" "" . shorten 70
+		      ppTitle = xmobarColor "#f00000" "" . shorten 70
 		    },
 	      terminal = myTerminal,
 	      modMask = myModMask,
