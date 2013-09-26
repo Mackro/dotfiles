@@ -2,5 +2,9 @@
 
 eval $(ssh-agent)
 
+eval $(gnome-keyring-daemon --start --components keyring,pkcs11)
+export GNOME_KEYRING_SOCKET
+export GNOME_KEYRING_PID
+
 setxkbmap "se(svdvorak)" &
 xmonad
