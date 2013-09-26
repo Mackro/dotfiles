@@ -15,7 +15,7 @@ myModMask = mod4Mask -- Rebind Mod to the windows key
 
 myBorderWidth = 2
 
-myNormalBorderColor = "gray"
+myNormalBorderColor = "black"
 
 myFocusedBorderColor = "purple"
 
