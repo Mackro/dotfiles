@@ -21,6 +21,9 @@ myFocusedBorderColor = "purple"
 
 myFocusFollowsMouse = False
 
+myWorkspaces = ["1. vim","2. term","3. web","4","5","6","7","8","9"]
+
+
 myLayoutHook = avoidStruts (smartBorders (tiled ||| Mirror tiled) ||| noBorders(Full)) ||| noBorders (fullscreenFull Full) 
                 where
                     tiled   =   Tall nmaster delta ratio
@@ -45,8 +48,9 @@ main = do
 		      ppOutput = hPutStrLn xmproc,
 		      ppTitle = xmobarColor "#f00000" "" . shorten 70
 		    },
-	      terminal = myTerminal,
-	      modMask = myModMask,
+		terminal = myTerminal,
+		modMask = myModMask,
+		workspaces = myWorkspaces,
         borderWidth = myBorderWidth,
 		startupHook = myStartupHook,
         normalBorderColor = myNormalBorderColor,
