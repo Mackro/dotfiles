@@ -7,9 +7,3 @@
 [submodule "vim/vim/bundle/vim-colors-solarized"]
 	path = vim/vim/bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
-[submodule "zsh/gname-terminal-colors-solarized"]
-	path = zsh/gname-terminal-colors-solarized
-	url = git@github.com:sigurdga/gnome-terminal-colors-solarized.git
-[submodule "zsh/gnome-terminal-colors-solarized"]
-	path = zsh/gnome-terminal-colors-solarized
-	url = git@github.com:sigurdga/gnome-terminal-colors-solarized.git
