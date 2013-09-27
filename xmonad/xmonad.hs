@@ -31,6 +31,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	[ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 	-- launch dmenu
 	, ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu -b ` && eval \"exec $exe\"")
+
+	-- Audio controls
+	, ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")
+	, ((0, 0x1008ff13), spawn "amixer -q set Master 10%+")
+	, ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
+
 	
 	-- Terminate application
 	, ((modm .|. shiftMask, xK_c     ), kill)
