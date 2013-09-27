@@ -37,6 +37,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	, ((0, 0x1008ff13), spawn "amixer -q set Master 10%+")
 	, ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
 
+	-- Spawn chromium
+	, ((modm, xK_c), spawn "chromium")
+
+	-- Spawn gnome-control-center
+	, ((modm, xK_g), spawn "gnome-control-center")
 	
 	-- Terminate application
 	, ((modm .|. shiftMask, xK_c     ), kill)
