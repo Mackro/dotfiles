@@ -16,6 +16,7 @@ alias gpom="git push origin master"
 alias gp="git pull origin master"
 alias jl="jobs -l"
 alias cls="clear & ls"
+alias pubkey="cat ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo \"Copied public key to clipboard...\""
 alias natti="	sudo rm -rf ~/Temp
 				mkdir ~/Temp
 				sudo shutdown -h now"
