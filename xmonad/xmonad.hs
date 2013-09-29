@@ -34,7 +34,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 	-- Audio controls
 	, ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")
+	, ((shiftMask, 0x1008ff11), spawn "amixer -q set Master 1%-")
 	, ((0, 0x1008ff13), spawn "amixer -q set Master 10%+")
+	, ((shiftMask, 0x1008ff13), spawn "amixer -q set Master 1%+")
 	, ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
 
 	-- Spawn chromium
@@ -76,6 +78,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	-- toggle the status bar gap (used with avoidStruts from Hooks.ManageDocks)
 	, ((modm , xK_b ), sendMessage ToggleStruts)
       
+	, ((modm .|. shiftMask, xK_l), spawn "xlock")
+
 	-- Quit xmonad
 	, ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 	
