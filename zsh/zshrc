@@ -19,6 +19,12 @@ alias cls="clear & ls"
 alias pubkey="cat ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo \"Copied public key to clipboard...\""
 alias natti="sudo shutdown -h now"
 
+# Job queue
+alias qpush="echo \"cd \`pwd\` && git push\" >> ~/.doqueue && echo \"Added git push to queue...\""
+alias qlist="cat ~/.doqueue"
+alias qclear="echo \"\" > ~/.doqueue"
+alias qrun=". ~/.doqueue"
+
 source $HOME/.aliases
 source $HOME/.paths
 
