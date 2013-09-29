@@ -30,7 +30,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	-- launch a terminal
 	[ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 	-- launch dmenu
-	, ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu -b ` && eval \"exec $exe\"")
+    , ((modm,				xK_space ), spawn "exe=`dmenu_path | dmenu -b ` && eval \"exec $exe\"")
 
 	-- Audio controls
 	, ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")
@@ -49,7 +49,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	, ((modm .|. shiftMask, xK_c     ), kill)
 
 	-- Switch layout
-    , ((modm,               xK_space ), sendMessage NextLayout)
+    , ((modm .|. shiftMask, xK_b ), sendMessage NextLayout)
 	
 	-- Reset xmonad conf
 	, ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
