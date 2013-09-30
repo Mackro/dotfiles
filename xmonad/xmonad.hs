@@ -27,10 +27,15 @@ myFocusFollowsMouse = False
 myWorkspaces = ["1. vim","2. term","3. web"] ++ map show [4..9]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
-	-- launch a terminal
+	-- Launch a terminal
 	[ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-	-- launch dmenu
-    , ((modm,				xK_space ), spawn "exe=`dmenu_path | dmenu -b ` && eval \"exec $exe\"")
+	
+	-- Launch dmenu (all)
+    , ((modm .|. shiftMask,		xK_space ), spawn "exe=`dmenu_path | dmenu -b ` && eval \"exec $exe\"")
+    , ((modm,					xK_space ), spawn "exe=`cat ~/.dmenu_favourites | dmenu -b ` && eval \"exec $exe\"")
+
+	-- Launch nvidia-settings
+	, ((modm .|. shiftMask, xK_n), spawn "nvidia-settings")
 
 	-- Audio controls
 	, ((0, 0x1008ff11), spawn "amixer -q set Master 10%-")
@@ -51,9 +56,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	-- Switch layout
     , ((modm .|. shiftMask, xK_b ), sendMessage NextLayout)
 	
-	-- Reset xmonad conf
-	, ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
-    
 	-- Move focus to next
 	, ((modm,               xK_Tab   ), windows W.focusDown)
 	
