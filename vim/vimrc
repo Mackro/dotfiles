@@ -23,8 +23,8 @@ set nowb
 
 "============ Movement ============"
 "Move one row instead of one line"
-nmap j gj
-nmap k gk 
+" nmap j gj
+" nmap k gk 
 
 "============ Page width ============"
 " This creates an invisible colorcolumn
