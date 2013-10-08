@@ -83,3 +83,8 @@ set t_Co=16
 "========== Map ============"
 map Q <Nop>
 
+"== Unmap arrow keys =="
+map <up>	<nop>
+map <down>	<nop>
+map <left>	<nop>
+map <right> <nop>
