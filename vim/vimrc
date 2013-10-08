@@ -1,4 +1,4 @@
-"H============ Searching ============"
+"============ Searching ============"
 "Highlight searches by default"
 set hlsearch
 set showmatch
