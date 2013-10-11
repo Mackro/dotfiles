@@ -44,6 +44,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	, ((shiftMask, 0x1008ff13), spawn "amixer -q set Master 1%+")
 	, ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
 
+	-- Print Screen
+	, ((shiftMask .|. modm, xK_p), spawn "scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~shots/'")
+
 	-- Spawn chromium
 	, ((modm, xK_c), spawn "chromium")
 
