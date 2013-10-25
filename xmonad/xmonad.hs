@@ -49,6 +49,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	, ((0, 0x1008ff06), spawn "echo 0 > /sys/class/leds/smc::kbd_backlight/brightness")
 	, ((0, 0x1008ff05), spawn "echo 255 > /sys/class/leds/smc::kbd_backlight/brightness")
 
+	-- Print Screen
+	, ((shiftMask .|. modm, xK_p), spawn "scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~shots/'")
+
 	-- Spawn chromium
 	, ((modm, xK_c), spawn "chromium")
 
