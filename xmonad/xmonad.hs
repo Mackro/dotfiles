@@ -44,6 +44,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 	, ((shiftMask, 0x1008ff13), spawn "amixer -q set Master 1%+")
 	, ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
 
+	-- Keyboard brightness control 
+	-- Note that you'll need to make /sys/class/leds/smc::kbd_backlight/brightness writable by xmonad 
+	, ((0, 0x1008ff06), spawn "echo 0 > /sys/class/leds/smc::kbd_backlight/brightness")
+	, ((0, 0x1008ff05), spawn "echo 255 > /sys/class/leds/smc::kbd_backlight/brightness")
+
 	-- Spawn chromium
 	, ((modm, xK_c), spawn "chromium")
 
