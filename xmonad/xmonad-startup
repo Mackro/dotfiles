@@ -7,5 +7,5 @@ export GNOME_KEYRING_SOCKET
 export GNOME_KEYRING_PID
 nm-applet &
 
-setxkbmap "se(svdvorak)" &
+# setxkbmap "se(svdvorak)" &
 xmonad

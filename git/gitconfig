@@ -1,13 +1,9 @@
 [user]
-	 name = John Barbero Unenge
-	 email = john.barbero.unenge@gmail.com
+	 name = Markus Otterberg
+	 email = 720otterberg@gmail.com
 
-	# Other authors
-#	name = RepoPusher
-#	email = user@server
 [core]
 	editor = vim
-	excludesfile = /Users/Barber/.gitignore
 	
 [alias]
 	br = branch
